@@ -16,15 +16,19 @@ function sendMessage() {
     `;
 
 
-    let answer = "Я пока учусь отвечать 📚";
+const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        message: text
+    })
+});
 
-    if (text.toLowerCase().includes("привет")) {
-        answer = "Привет! 👋 Я твой AI помощник.";
-    }
+const data = await response.json();
 
-    if (text.toLowerCase().includes("кто ты")) {
-        answer = "Я твой личный AI помощник 🤖";
-    }
+let answer = data.answer;
 
 
     setTimeout(() => {
