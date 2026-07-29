@@ -1,23 +1,46 @@
 function askAI() {
-    let question = document.getElementById("question").value.toLowerCase();
-    let answer = "";
+    let input = document.getElementById("question");
+    let text = input.value.trim();
 
-    if (question.includes("привет")) {
+    if (text === "") return;
+
+    let chat = document.getElementById("chat");
+
+    // сообщение пользователя
+    chat.innerHTML += `
+    <div class="message user">
+        👤 ${text}
+    </div>
+    `;
+
+    let answer = "Я пока не знаю этот вопрос, но учусь 📚";
+
+    let q = text.toLowerCase();
+
+    if (q.includes("привет")) {
         answer = "Привет! 👋 Рад тебя видеть.";
     } 
-    else if (question.includes("как дела")) {
-        answer = "У меня всё хорошо 🤖";
+    else if (q.includes("как дела")) {
+        answer = "У меня всё отлично 🤖";
     } 
-    else if (question.includes("кто ты")) {
+    else if (q.includes("кто ты")) {
         answer = "Я AI помощник, которого ты создаёшь 🚀";
-    } 
-    else if (question.includes("2+2")) {
+    }
+    else if (q.includes("2+2")) {
         answer = "2+2 = 4 ✅";
-    } 
-    else {
-        answer = "Я пока не знаю этот вопрос, но учусь 📚";
+    }
+    else if (q.includes("пока")) {
+        answer = "До встречи! 👋";
     }
 
-    document.getElementById("box").innerHTML = answer;
+    // ответ AI
+    chat.innerHTML += `
+    <div class="message ai">
+        🤖 ${answer}
+    </div>
+    `;
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
 }
-    
