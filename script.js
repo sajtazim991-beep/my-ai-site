@@ -1,4 +1,4 @@
-alert("Скрипт работает!");
+
 function sendMessage() {
 
     const input = document.getElementById("input");
