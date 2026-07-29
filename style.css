@@ -67,3 +67,29 @@ input {
     outline: none;
     font-size: 16px;
 }
+#chat {
+    width: 300px;
+    height: 250px;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.message {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.ai {
+    background: rgba(255,255,255,0.2);
+    text-align: left;
+}
+
+.user {
+    background: white;
+    color: black;
+    text-align: right;
+}
