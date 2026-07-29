@@ -27,7 +27,7 @@ const response = await fetch("/api/chat", {
 
 const data = await response.json();
 
-let answer = data.answer;
+let answer = data.answer || JSON.stringify(data);
 
 
     setTimeout(() => {
