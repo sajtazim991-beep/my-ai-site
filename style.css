@@ -16,45 +16,66 @@ body {
 }
 
 
-/* Левая часть */
+/* Левая панель */
 
 .sidebar {
-    width: 260px;
+    width: 270px;
     background: #171717;
     padding: 20px;
-    border-right: 1px solid #333;
+    border-right: 1px solid #2f2f2f;
 }
 
-.sidebar h2 {
-    font-size: 25px;
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
 }
 
-.sidebar button {
+.new-chat {
     width: 100%;
-    padding: 12px;
+    padding: 13px;
     background: #2563eb;
+    color: white;
     border: none;
     border-radius: 10px;
-    color: white;
+    cursor: pointer;
+    font-size: 16px;
 }
 
-.history p {
+.new-chat:hover {
+    background: #1d4ed8;
+}
+
+.sidebar h3 {
+    color: #aaa;
+    margin-top: 25px;
+}
+
+
+.history-item {
+    padding: 12px;
+    margin-top: 8px;
     background: #222;
-    padding: 10px;
-    border-radius: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.history-item:hover {
+    background: #333;
 }
 
 
-/* Правая часть */
 
-.chat-area {
+/* Чат */
+
+.chat {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 
-#chat {
+#messages {
     flex: 1;
     overflow-y: auto;
     padding: 30px;
@@ -62,10 +83,11 @@ body {
 
 
 .message {
-    max-width: 700px;
+    max-width: 750px;
     padding: 15px;
     margin: 15px auto;
     border-radius: 15px;
+    line-height: 1.5;
 }
 
 
@@ -76,42 +98,52 @@ body {
 
 .user {
     background: #2563eb;
-    margin-left: auto;
 }
+
 
 
 /* Поле ввода */
 
 .input-area {
-    padding: 20px;
     display: flex;
     gap: 10px;
+    padding: 20px;
 }
 
 
-input {
+.input-area input {
     flex: 1;
     padding: 15px;
     border-radius: 15px;
     border: none;
     background: #222;
     color: white;
+    font-size: 16px;
 }
 
 
 .input-area button {
     width: 60px;
+    border: none;
     border-radius: 15px;
     background: #2563eb;
     color: white;
-    border: none;
-}
-.app {
-    display: flex !important;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-.sidebar {
-    display: block !important;
-    width: 260px !important;
-    background: #171717 !important;
+
+.input-area button:hover {
+    background: #1d4ed8;
+}
+
+
+/* Телефон */
+
+@media(max-width:700px) {
+
+    .sidebar {
+        display: none;
+    }
+
 }
