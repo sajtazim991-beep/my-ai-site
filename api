@@ -1,13 +1,6 @@
 chat.js
 export default function handler(req, res) {
 
-    if (req.method !== "POST") {
-        return res.status(405).json({
-            error: "Только POST запросы"
-        });
-    }
-
-
     res.status(200).json({
         answer: "Сервер AI работает 🤖"
     });
