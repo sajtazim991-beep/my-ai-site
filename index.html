@@ -9,23 +9,50 @@
 
 <body>
 
-<div class="container">
-    <h1>🤖 AI Помощник</h1>
-    <p>Задай свой вопрос</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Помощник</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <div id="chat">
-        <div class="message ai">
-            🤖 привет я AI помощник 
+<body>
+
+<!-- СЮДА ВСТАВЛЯЕМ НОВЫЙ КОД -->
+
+<div class="app">
+
+    <aside class="sidebar">
+        <h2>🤖 AI</h2>
+        <button>+ Новый чат</button>
+
+        <h3>Недавние</h3>
+        <div class="history">
+            <p>Привет</p>
+            <p>Вопросы про AI</p>
+            <p>Учёба</p>
         </div>
-    </div>
+    </aside>
 
-    <input id="question" placeholder="Напиши сообщение...">
-    <button onclick="askAI()">Отправить</button>
+
+    <main class="chat-area">
+
+        <div id="chat">
+            <div class="message ai">
+                🤖 Привет! Я AI помощник.
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input id="question" placeholder="Напишите сообщение...">
+            <button onclick="askAI()">➤</button>
+        </div>
+
+    </main>
 
 </div>
-</div>
 
-</div>
+<!-- ДО СЮДА -->
 
 <script src="script.js?v=2"></script>
 
