@@ -3,20 +3,21 @@ function askAI() {
     let answer = "";
 
     if (question.includes("привет")) {
-        answer = "Привет! 👋 Я твой AI помощник.";
+        answer = "Привет! 👋 Рад тебя видеть.";
+    } 
+    else if (question.includes("как дела")) {
+        answer = "У меня всё хорошо 🤖";
     } 
     else if (question.includes("кто ты")) {
-        answer = "Я простой AI, которого ты создаёшь.";
-    }
+        answer = "Я AI помощник, которого ты создаёшь 🚀";
+    } 
     else if (question.includes("2+2")) {
         answer = "2+2 = 4 ✅";
-    }
-    else if (question.includes("как дела")) {
-        answer = "У меня всё отлично 🤖";
-    }
+    } 
     else {
-        answer = "Я пока не знаю этот вопрос, но я учусь 🚀";
+        answer = "Я пока не знаю этот вопрос, но учусь 📚";
     }
 
     document.getElementById("box").innerHTML = answer;
 }
+    
