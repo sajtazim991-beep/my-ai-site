@@ -106,3 +106,12 @@ input {
     color: white;
     border: none;
 }
+.app {
+    display: flex !important;
+}
+
+.sidebar {
+    display: block !important;
+    width: 260px !important;
+    background: #171717 !important;
+}
