@@ -1,60 +1,69 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI помощник</title>
-<link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>AI Помощник</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My AI</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- СЮДА ВСТАВЛЯЕМ НОВЫЙ КОД -->
-
 <div class="app">
 
+    <!-- Левая панель -->
     <aside class="sidebar">
-        <h2>🤖 AI</h2>
-        <button>+ Новый чат</button>
+
+        <div class="logo">
+            🤖 My AI
+        </div>
+
+        <button class="new-chat" onclick="newChat()">
+            + Новый чат
+        </button>
 
         <h3>Недавние</h3>
-        <div class="history">
-            <p>Привет</p>
-            <p>Вопросы про AI</p>
-            <p>Учёба</p>
+
+        <div id="history">
+            <!-- Тут будут появляться чаты -->
         </div>
+
     </aside>
 
 
-    <main class="chat-area">
+    <!-- Основной чат -->
+    <main class="chat">
 
-        <div id="chat">
+        <div id="messages">
+
             <div class="message ai">
-                🤖 Привет! Я AI помощник.
+                Привет! 👋 Я твой AI помощник.
             </div>
+
         </div>
+
 
         <div class="input-area">
-            <input id="question" placeholder="Напишите сообщение...">
-            <button onclick="askAI()">➤</button>
+
+            <input 
+            id="input"
+            placeholder="Напишите сообщение..."
+            onkeydown="handleEnter(event)"
+            >
+
+            <button onclick="sendMessage()">
+                ➤
+            </button>
+
         </div>
+
 
     </main>
 
 </div>
 
-<!-- ДО СЮДА -->
 
-<script src="script.js?v=2"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
