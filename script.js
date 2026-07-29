@@ -1,5 +1,4 @@
-
-function sendMessage() {
+async function sendMessage() {
 
     const input = document.getElementById("input");
     const messages = document.getElementById("messages");
