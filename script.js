@@ -1,4 +1,9 @@
 async function sendMessage() {
+    async function sendMessage() {
+    alert("Кнопка работает!");
+
+    const input = document.getElementById("input");
+    ...
     const input = document.getElementById("input");
     const messages = document.getElementById("messages");
 
