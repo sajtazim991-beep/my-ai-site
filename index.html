@@ -6,63 +6,32 @@
     <title>My AI</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="app">
 
-    <!-- Левая панель -->
-    <aside class="sidebar">
-
-        <div class="logo">
-            🤖 My AI
+    <div id="messages" class="messages">
+        <div class="message ai">
+            👋 Привет! Я My AI. Чем могу помочь?
         </div>
+    </div>
 
-        <button class="new-chat" onclick="newChat()">
-            + Новый чат
-        </button>
-
-        <h3>Недавние</h3>
-
-        <div id="history">
-            <!-- Тут будут появляться чаты -->
-        </div>
-
-    </aside>
-
-
-    <!-- Основной чат -->
-    <main class="chat">
-
-        <div id="messages">
-
-            <div class="message ai">
-                Привет! 👋 Я твой AI помощник.
-            </div>
-
-        </div>
-
-
-        <div class="input-area">
-
-            <input 
+    <div class="input-area">
+        <input
             id="input"
+            type="text"
             placeholder="Напишите сообщение..."
             onkeydown="handleEnter(event)"
-            >
+        >
 
-            <button onclick="sendMessage()">
-                ➤
-            </button>
-
-        </div>
-
-
-    </main>
+        <button onclick="sendMessage()">
+            ➤
+        </button>
+    </div>
 
 </div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
