@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     const { message } = req.body;
 
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AQ.Ab8RN6JaNntaB78klqC5cUA_kgiSH9bc0YfqIw8dAe8Vq5HITQ
       {
         method: "POST",
         headers: {
