@@ -1,9 +1,4 @@
 async function sendMessage() {
-    async function sendMessage() {
-    alert("Кнопка работает!");
-
-    const input = document.getElementById("input");
-    ...
     const input = document.getElementById("input");
     const messages = document.getElementById("messages");
 
@@ -13,51 +8,38 @@ async function sendMessage() {
     messages.innerHTML += `
         <div class="message user">${text}</div>
     `;
+
     input.value = "";
     messages.scrollTop = messages.scrollHeight;
 
     try {
-        const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AQ.Ab8RN6IYDKpQQRRWDlS23wvu_xwOWoWyI6zPedZGvGQm-5RZjw",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [
-                                {
-                                    text: text
-                                }
-                            ]
-                        }
-                    ]
-                })
-            }
-        );
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: text
+            })
+        });
 
         const data = await response.json();
 
-        const answer =
-            data.candidates?.[0]?.content?.parts?.[0]?.text ||
-            data.error?.message ||
-            "Не удалось получить ответ.";
-
         messages.innerHTML += `
-            <div class="message ai">${answer}</div>
+            <div class="message ai">
+                ${data.answer || data.error || "Ошибка"}
+            </div>
         `;
 
         messages.scrollTop = messages.scrollHeight;
 
-    } catch (err) {
+    } catch (error) {
         messages.innerHTML += `
             <div class="message ai">
-                ❌ Ошибка подключения к Gemini.
+                ❌ Не удалось подключиться к серверу.
             </div>
         `;
-        console.error(err);
+        console.error(error);
     }
 }
 
@@ -66,11 +48,3 @@ function handleEnter(event) {
         sendMessage();
     }
 }
-
-function newChat() {
-    document.getElementById("messages").innerHTML = `
-        <div class="message ai">
-            Привет! 👋 Новый чат создан.
-        </div>
-    `;
-}        
