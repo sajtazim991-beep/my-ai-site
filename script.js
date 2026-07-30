@@ -2,21 +2,18 @@ async function sendMessage() {
     const input = document.getElementById("input");
     const messages = document.getElementById("messages");
 
-    let text = input.value.trim();
-    if (text === "") return;
+    const text = input.value.trim();
+    if (!text) return;
 
     messages.innerHTML += `
-        <div class="message user">
-            ${text}
-        </div>
+        <div class="message user">${text}</div>
     `;
-
-    messages.scrollTop = messages.scrollHeight;
     input.value = "";
+    messages.scrollTop = messages.scrollHeight;
 
     try {
         const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AQ.Ab8RN6JaNntaB78klqC5cUA_kgiSH9bc0YfqIw8dAe8Vq5HITQ
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AQ.Ab8RN6IYDKpQQRRWDlS23wvu_xwOWoWyI6zPedZGvGQm-5RZjw",
             {
                 method: "POST",
                 headers: {
@@ -38,21 +35,13 @@ async function sendMessage() {
 
         const data = await response.json();
 
-        let answer = "Ошибка.";
-
-        if (
-            data.candidates &&
-            data.candidates.length > 0 &&
-            data.candidates[0].content &&
-            data.candidates[0].content.parts
-        ) {
-            answer = data.candidates[0].content.parts[0].text;
-        }
+        const answer =
+            data.candidates?.[0]?.content?.parts?.[0]?.text ||
+            data.error?.message ||
+            "Не удалось получить ответ.";
 
         messages.innerHTML += `
-            <div class="message ai">
-                ${answer}
-            </div>
+            <div class="message ai">${answer}</div>
         `;
 
         messages.scrollTop = messages.scrollHeight;
@@ -79,4 +68,4 @@ function newChat() {
             Привет! 👋 Новый чат создан.
         </div>
     `;
-}
+}        
