@@ -6,17 +6,26 @@ export default async function handler(req, res) {
   try {
     const { message } = req.body;
 
-    const response = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: "gpt-5.5",
-        input: message
-      })
-    });
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AQ.Ab8RN6JaNntaB78klqC5cUA_kgiSH9bc0YfqIw8dAe8Vq5HITQ
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: message,
+                },
+              ],
+            },
+          ],
+        }),
+      }
+    );
 
     const data = await response.json();
 
@@ -25,14 +34,14 @@ export default async function handler(req, res) {
     }
 
     const answer =
-      data.output?.[0]?.content?.[0]?.text ||
+      data.candidates?.[0]?.content?.parts?.[0]?.text ||
       "Не удалось получить ответ.";
 
     return res.status(200).json({ answer });
 
   } catch (error) {
     return res.status(500).json({
-      error: error.message
+      error: error.message,
     });
   }
 }
